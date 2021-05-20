@@ -1,0 +1,17 @@
+terraform {
+  backend "remote" {
+    organization = "tnguyen"
+
+    workspaces {
+      name = "lambda-dotnet-core"
+    }
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+  
+}
