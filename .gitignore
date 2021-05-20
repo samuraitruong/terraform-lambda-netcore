@@ -32,3 +32,8 @@ override.tf.json
 
 bin/
 Debug/
+obj/
+function.zip
+dist/
+.env
+.terraform.lock.hcl

@@ -1,18 +1,17 @@
 provider "aws" {
   # region = "ap-southeast-2"
-  # access_key = "AKIAYNFGROTUMG7EYL66"
-  # secret_key = "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"
+  # access_key = ""
+  # secret_key = ""
 }
-
 
 module "s3" {
   source= "./modules/s3"
 }
 
 
-module "network" {
-  source= "./modules/network"
-}
+# module "network" {
+#   source= "./modules/network"
+# }
 
 module "app" {
   source= "./modules/app"

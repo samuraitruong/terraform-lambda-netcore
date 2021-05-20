@@ -17,7 +17,7 @@ resource "aws_api_gateway_method" "proxyMethod" {
    authorization = "NONE"
 }
 
-resource "aws_api_gateway_integration" "lambda" {
+resource "aws_api_gateway_integration" "lambda1" {
    rest_api_id = aws_api_gateway_rest_api.apiLambda.id
    resource_id = aws_api_gateway_method.proxyMethod.resource_id
    http_method = aws_api_gateway_method.proxyMethod.http_method
@@ -35,7 +35,7 @@ resource "aws_api_gateway_method" "proxy_root" {
    authorization = "NONE"
 }
 
-resource "aws_api_gateway_integration" "lambda_root" {
+resource "aws_api_gateway_integration" "api_root" {
    rest_api_id = aws_api_gateway_rest_api.apiLambda.id
    resource_id = aws_api_gateway_method.proxy_root.resource_id
    http_method = aws_api_gateway_method.proxy_root.http_method
@@ -46,10 +46,10 @@ resource "aws_api_gateway_integration" "lambda_root" {
 }
 
 
-resource "aws_api_gateway_deployment" "apideploy" {
+resource "aws_api_gateway_deployment" "rest_apideploy" {
    depends_on = [
-     aws_api_gateway_integration.lambda,
-     aws_api_gateway_integration.lambda_root,
+     aws_api_gateway_integration.lambda1,
+     aws_api_gateway_integration.api_root,
    ]
 
    rest_api_id = aws_api_gateway_rest_api.apiLambda.id
@@ -57,7 +57,7 @@ resource "aws_api_gateway_deployment" "apideploy" {
 }
 
 
-resource "aws_lambda_permission" "apigw" {
+resource "aws_lambda_permission" "apigw1" {
    statement_id  = "AllowAPIGatewayInvoke"
    action        = "lambda:InvokeFunction"
    function_name = aws_lambda_function.digital_signature_api.function_name

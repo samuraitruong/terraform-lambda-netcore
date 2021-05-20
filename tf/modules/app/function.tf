@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "digital_signature_api" {
-   function_name = "ServerlessExample"
+   function_name = "Digital_Signature_Service_API"
 
    # The bucket name as created earlier with "aws s3api create-bucket"
    s3_bucket = var.deploy_bucket

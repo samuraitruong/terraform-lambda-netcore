@@ -8,7 +8,6 @@ resource "aws_s3_bucket" "deploy" {
   }
 }
 
-
 resource "aws_s3_bucket_object" "default_version" {
   bucket = aws_s3_bucket.deploy.bucket
   key    = "0.1/function.zip"
