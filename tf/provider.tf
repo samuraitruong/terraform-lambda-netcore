@@ -18,4 +18,6 @@ module "app" {
   stage = var.stage
   deploy_bucket = module.s3.deploy_bucket
   code_version = var.code_version
+  signature_certificate = var.signature_certificate
+  signature_certiticate_password = var.signature_certiticate_password
 }

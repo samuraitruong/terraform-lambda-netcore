@@ -17,3 +17,8 @@ variable "stage" {
 variable "code_version" {
   default = "0.1"
 }
+
+
+
+variable "signature_certificate" {}
+variable "signature_certiticate_password" {}
