@@ -20,4 +20,5 @@ module "app" {
   code_version = var.code_version
   signature_certificate = var.signature_certificate
   signature_certiticate_password = var.signature_certiticate_password
+  default_api_key = var.default_api_key
 }
