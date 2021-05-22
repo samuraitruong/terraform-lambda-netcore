@@ -37,7 +37,7 @@ resource "aws_lambda_function" "digital_signature_api" {
   }
 }
 
-data "aws_iam_policy_document" "lambda-role-policy" {
+data "aws_iam_policy_document" "lambda_role_policy" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -52,7 +52,7 @@ data "aws_iam_policy_document" "lambda-role-policy" {
  # may access.
 resource "aws_iam_role" "lambda_exec" {
    name = "Digital-Signature-Sign-Lambda-Role"
-   assume_role_policy = data.aws_iam_policy_document.lambda-role-policy.json
+   assume_role_policy = data.aws_iam_policy_document.lambda_role_policy.json
 }
 
 

@@ -1,7 +1,7 @@
 set -e
 rm -rf ./dist/*.*
 
-dotnet publish  src/DigitalSignatureApi/DigitalSignatureApi.csproj --output ./dist --configuration Release
+dotnet publish  src/DigitalSignatureApi/DigitalSignatureApi.csproj -c Release --output ./dist 
 cd dist
 echo {}>appsettings.json
 zip -r function.zip .
