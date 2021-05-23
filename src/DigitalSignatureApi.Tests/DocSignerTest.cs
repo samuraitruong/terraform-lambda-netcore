@@ -9,6 +9,7 @@ using Amazon.Lambda.TestUtilities;
 
 using DigitalSignatureApi;
 using System.IO;
+using Microsoft.Extensions.Options;
 
 namespace DigitalSignatureApi.Tests
 {
@@ -17,7 +18,9 @@ namespace DigitalSignatureApi.Tests
         [Fact]
         public void TestDocSign()
         {
-            var function = new DocSigner();
+            IOptions<AppConfig> config = Options.Create<AppConfig>(new AppConfig());
+
+            var function = new DocSigner(config);
               var result = function.Sign(new SignRequest()
               {
                 Document = Helper.ReadAsBase64("../../../TestInputs/sample.xlsx")
