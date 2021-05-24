@@ -38,10 +38,20 @@ namespace DigitalSignatureApi.Tests
         {
           Document = Helper.ReadAsBase64("../../../TestInputs/sample.xlsx")
         }),
-        Encoding.UTF8, 
+        Encoding.UTF8,
         "application/json");
 
-        var res = await client.PostAsync("https://dfh1v3m3zc.execute-api.ap-southeast-2.amazonaws.com/dev", content);
+        var message = new HttpRequestMessage()
+        {
+          Method = HttpMethod.Post,
+          RequestUri = new Uri("https://djtvp791sh.execute-api.ap-southeast-2.amazonaws.com/dev"),
+          Content = content,
+          Headers = {
+            { "x-api-key", "53c1136e-81a9-4dd1-a6f9-6759ea53ad9a"}
+         }
+        };
+
+        var res = await client.SendAsync(message);
         var data = await res.Content.ReadAsStringAsync();
         var result = System.Text.Json.JsonSerializer.Deserialize<SignResponse>(data);
         Assert.NotNull(result.SignedDocument);

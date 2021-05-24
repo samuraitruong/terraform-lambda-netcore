@@ -16,10 +16,9 @@ namespace DigitalSignatureApi
 {
   public class DocSigner: IDocSigner
   {
-    private AppConfig config;
-    public DocSigner(IOptions<AppConfig> config) {
+    private CertificateConfig config;
+    public DocSigner(IOptions<CertificateConfig> config) {
       this.config = config.Value;
-      Console.WriteLine(config.Value.Certificate);
     }
     public SignResponse Sign(SignRequest request)
     {

@@ -18,7 +18,9 @@ namespace DigitalSignatureApi.Tests
         [Fact]
         public void TestDocSign()
         {
-            IOptions<AppConfig> config = Options.Create<AppConfig>(new AppConfig());
+            var appConfig = System.Text.Json.JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("appsettings.json"));
+
+            IOptions<CertificateConfig> config = Options.Create<CertificateConfig>(appConfig.Certificate);
 
             var function = new DocSigner(config);
               var result = function.Sign(new SignRequest()
